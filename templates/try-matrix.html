@@ -75,7 +75,7 @@ html { scroll-behavior: smooth; scroll-padding-top: calc(var(--navbar-height) + 
 
                 <div class="client-cards">
                     {% for client in featured_clients %}
-                    <details id="{{ client.slug }}" class="client-card{% if client.extra.packages.apple_app_store %} platform-ios{% endif %}{% if client.extra.packages.google_play_store or client.extra.packages.f_droid %} platform-android{% endif %}{% if client.extra.packages.webapp %} platform-web{% endif %}{% if client.extra.packages.windows_installer %} platform-windows{% endif %}{% if client.extra.packages.macos_installer %} platform-macos{% endif %}{% if client.extra.packages.flathub or client.extra.packages.other_linux_link %} platform-linux{% endif %}">
+                    <details id="{{ client.slug }}" class="client-card{% if client.extra.packages.apple_app_store %} platform-ios{% endif %}{% if client.extra.packages.google_play_store or client.extra.packages.f_droid %} platform-android{% endif %}{% if client.extra.packages.webapp %} platform-web{% endif %}{% if client.extra.packages.windows_installer %} platform-windows{% endif %}{% if client.extra.packages.macos_installer %} platform-macos{% endif %}{% if client.extra.packages.flathub or client.extra.packages.flatpakref or client.extra.packages.other_linux_link %} platform-linux{% endif %}">
                         <summary class="client-card-summary">
                             <div class="client-card-summary-inner">
                                 <img src="/ecosystem/clients/{{ client.extra.thumbnail }}"

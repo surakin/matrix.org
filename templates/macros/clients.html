@@ -99,8 +99,8 @@ platform-ios
 {% if client.packages.google_play_store.app_id %}
 platform-android
 {% endif %}
-{% if client.packages.flathub.app_id %}
-platform-flathub
+{% if client.packages.flathub.app_id or client.packages.flatpakref %}
+platform-flatpak
 {% endif %}
 {% if client.packages.other_linux_link %}
 platform-linux
@@ -135,9 +135,17 @@ licence-{{ client.licence | slugify }}
 <a href="{{ packages.macos_installer }}"><img src="/assets/stores/download_for_macos.svg"
         alt="Download for macOS" /></a>
 {% endif %}
+{% if packages.other_linux_link %}
+<a href="{{ packages.other_linux_link }}"><img src="/assets/stores/download_for_linux.svg"
+        alt="Download for Linux" /></a>
+{% endif %}
 {% if packages.flathub %}
 <a href="https://flathub.org/apps/details/{{ packages.flathub.app_id }}"><img src="/assets/stores/flathub.svg"
         alt="Download on Flathub" /></a>
+{% endif %}
+{% if packages.flatpakref %}
+<a href="{{ packages.flatpakref }}"><img src="/assets/stores/install_with_flatpak.svg"
+        alt="Download Flatpak" /></a>
 {% endif %}
 {% if packages.webapp %}
 <a href="{{ packages.webapp }}"><img src="/assets/stores/use_in_browser.svg" alt="Use in your browser" /></a>
@@ -161,6 +169,6 @@ licence-{{ client.licence | slugify }}
 {% if packages.google_play_store or packages.f_droid %}<div class="platform-pill platform-pill--android">Android</div>{% endif %}
 {% if packages.windows_installer %}<div class="platform-pill platform-pill--windows">Windows</div>{% endif %}
 {% if packages.macos_installer %}<div class="platform-pill platform-pill--macos">macOS</div>{% endif %}
-{% if packages.flathub or packages.other_linux_link %}<div class="platform-pill platform-pill--linux">Linux</div>{% endif %}
+{% if packages.flathub or packages.flatpakref or packages.other_linux_link %}<div class="platform-pill platform-pill--linux">Linux</div>{% endif %}
 {% if packages.webapp %}<div class="platform-pill platform-pill--web">Web</div>{% endif %}
 {% endmacro %}
